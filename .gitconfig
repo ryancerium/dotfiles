@@ -1,0 +1,42 @@
+[core]
+	autocrlf = false
+	editor = vim
+	eol = lf
+	excludesfile = ~/.gitignore
+	filemode = false
+	pager = diff-so-fancy | less --tabs=4 -RFX
+[color]
+	ui = true
+[user]
+	name = Ryan Phelps
+	email = rphelps@apexclearing.com
+[push]
+	default = simple
+[diff]
+	tool = vimdiff
+	renames = true
+[alias]
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue)<%an>%Creset' --abbrev-commit
+[rebase]
+	autoStash = true
+[gitreview]
+	rebase = false
+	remote = origin
+[diff-so-fancy]
+	markEmptyLines = true 
+[color "diff-highlight"]
+	oldNormal = red
+	oldHighlight = red bold strike 52
+	newNormal = green 
+	newHighlight = green bold 22
+[color "diff"]
+	meta = cyan reverse 
+	frag = cyan 
+	commit = blue bold
+	old = red strike
+	new = green 
+	whitespace = red reverse
+[http]
+	sslVerify = false
+[credential "https://github.com"]
+	username = ryancerium@gmail.com
