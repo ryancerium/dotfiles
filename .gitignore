@@ -1,0 +1,15 @@
+.classpath
+.externalNativeBuild/
+.gitreview
+.gradle
+.idea
+.project
+.settings/
+.vscode
+\?/
+bin/
+build/
+obj/
+out/
+services/AtheerRenderingService/proj.android-studio/app/assets/
+services/AtheerRenderingService/proj.android-studio/app/libs/
