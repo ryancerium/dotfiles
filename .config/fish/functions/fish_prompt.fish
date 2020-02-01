@@ -8,7 +8,7 @@ function fish_prompt
         set prompt (string replace $HOME '~' (pwd))
     end
 
-    set k8s_context (grep 'current-context' ~/.kube/config | cut -d ' ' -f 2)
+    set k8s_context (grep 'current-context' ~/.kube/config ^ /dev/null | cut -d ' ' -f 2)
 
     if [ -n "$SSH_CONNECTION" -o -n "$SSH_CLIENT" -o -n "$SSH_TTY" ]
         # Red background color if in an SSH session 
