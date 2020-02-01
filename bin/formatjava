@@ -1,0 +1,19 @@
+#!/bin/bash
+
+JAVA=/usr/lib/jvm/java-8-oracle/jre/bin/java
+if [[ ! -e "$JAVA" ]]; then
+    JAVA=java
+fi
+
+GOOGLE_JAVA_FORMAT=~/bin/google-java-format-1.7-all-deps.jar
+
+if [[ ! -e "$GOOGLE_JAVA_FORMAT" ]]; then
+    curl -L -o "$GOOGLE_JAVA_FORMAT" https://github.com/google/google-java-format/releases/download/google-java-format-1.7/google-java-format-1.7-all-deps.jar
+fi
+
+if [[ $# -eq 0 ]]; then
+    find . -name "*.java" -print0 | xargs -0 $JAVA -jar $GOOGLE_JAVA_FORMAT -i 
+else
+    $JAVA -jar $GOOGLE_JAVA_FORMAT -i "$@"
+fi
+
