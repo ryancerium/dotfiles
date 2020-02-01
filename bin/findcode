@@ -1,0 +1,51 @@
+#!/bin/bash
+
+findcase="-i"
+script_name=$(basename "$0")
+if [[ "$script_name" = "findword" ]]; then
+    findword="-w"
+elif [[ "$script_name" = "findcase" ]]; then
+    findcase=""
+fi
+
+default_file_pattern=".*(groovy|java|kotlin|yaml|yml|xml)"
+if [[ $# -eq 1 ]]; then
+    file_pattern="$default_file_pattern"
+    needle="$1"
+elif [[ $# -eq 2 ]]; then
+    file_pattern="$1"
+    needle="$2"
+else
+    echo "Usage: $script_name [file_pattern] [needle_pattern]"
+    echo
+    echo "    [file_pattern] defaults to $default_file_pattern"
+    exit 0
+fi
+
+find . \
+       -name "\?"                     -prune -o \
+       -name "*.class"                -prune -o \
+       -name "*.dll"                  -prune -o \
+       -name "*.jar"                  -prune -o \
+       -name "*.log"                  -prune -o \
+       -name "*.min.*"                -prune -o \
+       -name "*.pdb"                  -prune -o \
+       -name "*.so"                   -prune -o \
+       -name ".git"                   -prune -o \
+       -name ".idea"                  -prune -o \
+       -name "angular"                -prune -o \
+       -name "ansible-2.0.1.0"        -prune -o \
+       -name "bin"                    -prune -o \
+       -name "BootloaderK26"          -prune -o \
+       -name "build"                  -prune -o \
+       -name "boost"                  -prune -o \
+       -name "node_modules"           -prune -o \
+       -name "obj"                    -prune -o \
+       -name "out"                    -prune -o \
+       -name "outputs"                -prune -o \
+       -name "third_party"            -prune -o \
+       -name "tmp"                    -prune -o \
+       -name "wxWidgets"              -prune -o \
+       -type f                                  \
+       -regextype posix-egrep -regex "$file_pattern" -print0 | xargs -0 egrep --color $findcase $findword -n "$needle"
+
