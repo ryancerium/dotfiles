@@ -1,0 +1,13 @@
+#!/bin/sh
+xrandr --output HDMI-2 --off \
+       --output HDMI-1 --off \
+       --output DP-1 --mode 1280x720 --pos 3200x0 --rotate normal \
+       --output eDP-1 --primary --mode 3200x1800 --pos 0x0 --rotate normal \
+       --output DP-2 --off
+
+       --output DP-1 --mode 1920x1080i --pos 3200x0 --rotate normal \
+sleep 5
+
+xfconf-query -c xfce4-panel -p /panels/panel-0/output-name -s eDP-1
+xfconf-query -c xfce4-panel -p /panels/panel-1/output-name -s DP-1
+
