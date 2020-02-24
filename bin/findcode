@@ -8,7 +8,7 @@ elif [[ "$script_name" = "findcase" ]]; then
     findcase=""
 fi
 
-default_file_pattern=".*(groovy|java|kotlin|yaml|yml|xml)"
+default_file_pattern=".*(groovy|java|kotlin|sls|yaml|yml|xml)"
 if [[ $# -eq 1 ]]; then
     file_pattern="$default_file_pattern"
     needle="$1"
