@@ -40,5 +40,4 @@
 	sslVerify = false
 [credential "https://github.com"]
 	username = ryancerium@gmail.com
-[credential]
 	helper = store
