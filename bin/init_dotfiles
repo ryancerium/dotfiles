@@ -24,3 +24,6 @@ curl https://downloads.slack-edge.com/linux_releases/slack-desktop-4.3.2-amd64.d
 sudo dpkg --install ~/Downloads/slack-desktop-4.3.2-amd64.deb
 
 sudo apt install -f
+
+# https://github.com/settings/tokens/new
+# 
