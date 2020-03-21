@@ -28,6 +28,7 @@ find . \
        -name "*.dll"                  -prune -o \
        -name "*.jar"                  -prune -o \
        -name "*.log"                  -prune -o \
+       -name "*.md"                   -prune -o \
        -name "*.min.*"                -prune -o \
        -name "*.pdb"                  -prune -o \
        -name "*.so"                   -prune -o \
@@ -36,7 +37,6 @@ find . \
        -name "angular"                -prune -o \
        -name "ansible-2.0.1.0"        -prune -o \
        -name "bin"                    -prune -o \
-       -name "BootloaderK26"          -prune -o \
        -name "build"                  -prune -o \
        -name "boost"                  -prune -o \
        -name "node_modules"           -prune -o \
@@ -45,7 +45,6 @@ find . \
        -name "outputs"                -prune -o \
        -name "third_party"            -prune -o \
        -name "tmp"                    -prune -o \
-       -name "wxWidgets"              -prune -o \
        -type f                                  \
        -regextype posix-egrep -regex "$file_pattern" -print0 | xargs -0 egrep --color $findcase $findword -n "$needle"
 
