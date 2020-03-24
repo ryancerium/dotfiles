@@ -11,19 +11,26 @@ git clone --bare https://www.github.com/ryancerium/dotfiles.git "$GIT_DIR"
 git --git-dir="$GIT_DIR" --work-tree=$HOME config --local status.showUntrackedFiles no
 git --git-dir="$GIT_DIR" --work-tree=$HOME checkout
 
-curl https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb \
-     --output  ~/Downloads/google-chrome-stable_current_amd64.deb
-sudo dpkg --install ~/Downloads/google-chrome-stable_current_amd64.deb
 
-curl https://linux.dropbox.com/packages/ubuntu/dropbox_2019.02.14_amd64.deb \
-     --output  ~/Downloads/dropbox_2019.02.14_amd64.deb
-sudo dpkg --install ~/Downloads/dropbox_2019.02.14_amd64.deb
+if [[ which dnf ]]; then
+    curl https://www.dropbox.com/packages/fedora/nautilus-dropbox-2020.03.04-1.fedora.x86_64.rpm --output ~/Downloads/nautilus-dropbox-2020.03.04-1.fedora.x86_64.rpm
+    curl https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm              --output ~/Downloads/google-chrome-stable_current_x86_64.rpm
+    curl https://downloads.slack-edge.com/linux_releases/slack-4.3.2-0.1.fc21.x86_64.rpm         --output ~/Downloads/slack-4.3.2-0.1.fc21.x86_64.rpm
+    
+    sudo dnf install -y ~/Downloads/nautilus-dropbox-2020.03.04-1.fedora.x86_64.rpm
+    sudo dnf install -y ~/Downloads/google-chrome-stable_current_x86_64.rpm
+    sudo dnf install -y ~/Downloads/slack-4.3.2-0.1.fc21.x86_64.rpm
+else
+    curl https://linux.dropbox.com/packages/ubuntu/dropbox_2019.02.14_amd64.deb        --output  ~/Downloads/dropbox_2019.02.14_amd64.deb
+    curl https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb     --output  ~/Downloads/google-chrome-stable_current_amd64.deb
+    curl https://downloads.slack-edge.com/linux_releases/slack-desktop-4.3.2-amd64.deb --output  ~/Downloads/slack-desktop-4.3.2-amd64.deb
 
-curl https://downloads.slack-edge.com/linux_releases/slack-desktop-4.3.2-amd64.deb \
-     --output  ~/Downloads/slack-desktop-4.3.2-amd64.deb
-sudo dpkg --install ~/Downloads/slack-desktop-4.3.2-amd64.deb
+    sudo dpkg --install ~/Downloads/dropbox_2019.02.14_amd64.deb
+    sudo dpkg --install ~/Downloads/google-chrome-stable_current_amd64.deb
+    sudo dpkg --install ~/Downloads/slack-desktop-4.3.2-amd64.deb
 
-sudo apt install -f
+    sudo apt install -f
+fi
 
 # https://github.com/settings/tokens/new
 # 
