@@ -12,7 +12,7 @@ git --git-dir="$GIT_DIR" --work-tree=$HOME config --local status.showUntrackedFi
 git --git-dir="$GIT_DIR" --work-tree=$HOME checkout
 
 
-if [[ which dnf ]]; then
+if which dnf; then
     curl https://www.dropbox.com/packages/fedora/nautilus-dropbox-2020.03.04-1.fedora.x86_64.rpm --output ~/Downloads/nautilus-dropbox-2020.03.04-1.fedora.x86_64.rpm
     curl https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm              --output ~/Downloads/google-chrome-stable_current_x86_64.rpm
     curl https://downloads.slack-edge.com/linux_releases/slack-4.3.2-0.1.fc21.x86_64.rpm         --output ~/Downloads/slack-4.3.2-0.1.fc21.x86_64.rpm
