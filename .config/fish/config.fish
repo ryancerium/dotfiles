@@ -1,9 +1,9 @@
 set -x PATH                                \
     $PATH                                  \
-    "$HOME/bin"                            \
-    "$HOME/bin/google-cloud-sdk/bin"       \
-    "$HOME/bin/go/bin"                     \
-    "$HOME/bin/kafka/kafka_2.12-2.2.0/bin"
+    "$HOME/bin"                            
+#    "$HOME/bin/google-cloud-sdk/bin"       \
+#    "$HOME/bin/go/bin"                     \
+#    "$HOME/bin/kafka/kafka_2.12-2.2.0/bin" \
 set -x fish_color_operator red
 set -x DOCKER_HOST tcp://localhost:2375
 
