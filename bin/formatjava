@@ -8,7 +8,7 @@ fi
 GOOGLE_JAVA_FORMAT=~/bin/google-java-format-1.7-all-deps.jar
 
 if [[ ! -e "$GOOGLE_JAVA_FORMAT" ]]; then
-    curl -L -o "$GOOGLE_JAVA_FORMAT" https://github.com/google/google-java-format/releases/download/google-java-format-1.7/google-java-format-1.7-all-deps.jar
+    curl --insecure -L -o "$GOOGLE_JAVA_FORMAT" https://github.com/google/google-java-format/releases/download/google-java-format-1.7/google-java-format-1.7-all-deps.jar
 fi
 
 if [[ $# -eq 0 ]]; then
