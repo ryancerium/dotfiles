@@ -1,5 +1,6 @@
 set -x PATH                                \
     $PATH                                  \
+    "/usr/sbin"                            \
     "$HOME/bin"                            
 #    "$HOME/bin/google-cloud-sdk/bin"       \
 #    "$HOME/bin/go/bin"                     \
