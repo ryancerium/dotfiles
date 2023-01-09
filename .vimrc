@@ -23,7 +23,8 @@ set expandtab
 set nowrap
 " show line numbers
 set number
-
+" Fix a windows console error
+set t_u7=
 set directory=/tmp
 
 syntax on

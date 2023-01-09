@@ -15,7 +15,15 @@ function fish_prompt
     set k8s_color 7777bb
 
     printf "\n"
-    if git rev-parse --is-inside-work-tree > /dev/null ^ /dev/null
+    
+    if which kubectl > /dev/null
+        set k8s_context (kubectl config get-contexts | grep '*' | awk '{ print $2 " (" $5 ") " }' )
+        printf (set_color -b $k8s_color)"⎈ $k8s_context"
+        transition $k8s_color $bg_color
+        printf "\n"
+    end
+
+    if git rev-parse --is-inside-work-tree &> /dev/null
         set branch " "(git symbolic-ref --short -q HEAD)" "
         printf (set_color -b f34f29)"$branch"
         transition $git_color $dir_color
@@ -26,11 +34,6 @@ function fish_prompt
     transition $dir_color $bg_color
     printf "\n"
 
-    #set k8s_context (grep 'current-context' ~/.kube/config ^ /dev/null | cut -d ' ' -f 2)
-    #if test -n "$k8s_context"
-    #    printf (set_color -b $k8s_color)"⎈ $k8s_context "
-    #    transition $k8s_color $bg_color
-    #end
 
     printf "\$ "
 end
