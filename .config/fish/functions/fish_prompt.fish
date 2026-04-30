@@ -16,24 +16,31 @@ function fish_prompt
 
     printf "\n"
     
-    if which kubectl > /dev/null
-        set k8s_context (kubectl config get-contexts | grep '*' | awk '{ print $2 " (" $5 ") " }' )
-        printf (set_color -b $k8s_color)"⎈ $k8s_context"
+    #date -d now '+%S.%N'
+    if [ -e ~/.kube/config ]
+        set k8s_context (
+            yq '    .current-context as $current-context |
+                    .contexts[] |
+                    select(.name == $current-context) |
+                    ("⎈ " + $current-context + ":" + (.context.namespace // "") )' ~/.kube/config)
+        printf (set_color -b $k8s_color)$k8s_context
         transition $k8s_color $bg_color
         printf "\n"
     end
 
+    #date -d now '+%S.%N'
+
     if git rev-parse --is-inside-work-tree &> /dev/null
         set branch " "(git symbolic-ref --short -q HEAD)" "
-        printf (set_color -b f34f29)"$branch"
+        printf (set_color -b f34f29)$branch
         transition $git_color $dir_color
     end
 
+    #date -d now '+%S.%N'
     set cwd (string replace $HOME '~' (pwd))
     printf (set_color -b $dir_color)"$cwd "
     transition $dir_color $bg_color
     printf "\n"
-
 
     printf "\$ "
 end

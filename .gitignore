@@ -9,6 +9,7 @@
 \?/
 bin/
 build/
+target/
 obj/
 out/
 services/AtheerRenderingService/proj.android-studio/app/assets/
