@@ -19,15 +19,27 @@ alias dotfiles="git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME"
 cat ~/bin/kubectl_complete.fish | source
 
 function kubectl --wraps kubectl
-    command kubectl $argv[1] --insecure-skip-tls-verify=true $argv[2..]
+    if [ $argv[1] = "namespace" ]
+        command kubectl $argv
+    else
+        command kubectl $argv[1] --insecure-skip-tls-verify=true $argv[2..]
+    end
 end
 
 function k --wraps kubectl
-    command kubecolor $argv[1] --insecure-skip-tls-verify=true $argv[2..]
+    if [ $argv[1] = "namespace" ]
+        command kubecolor $argv
+    else
+        command kubecolor $argv[1] --insecure-skip-tls-verify=true $argv[2..]
+    end
 end
 
 function kubecolor --wraps kubectl
-    command kubecolor $argv[1] --insecure-skip-tls-verify=true $argv[2..]
+    if [ $argv[1] = "namespace" ]
+        command kubecolor $argv
+    else
+        command kubecolor $argv[1] --insecure-skip-tls-verify=true $argv[2..]
+    end
 end
 
 alias watch="watch --color"
