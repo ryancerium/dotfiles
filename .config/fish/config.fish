@@ -42,6 +42,8 @@ function kubecolor --wraps kubectl
     end
 end
 
+complete -c kubectl -n '__fish_seen_subcommand_from namespace' -f -a '(kubectl --insecure-skip-tls-verify=true get namespaces -o jsonpath="{.items[*].metadata.name}" 2>/dev/null | string split " ")'
+
 alias watch="watch --color"
 
 # Less need for this w/ the java8 and java11 functions
