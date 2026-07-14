@@ -23,7 +23,7 @@ function fish_prompt
                     .contexts[] |
                     select(.name == $current-context) |
                     ("⎈ " + $current-context + ":" + (.context.namespace // "") )' ~/.kube/config)
-        printf (set_color -b $k8s_color)$k8s_context
+        printf (set_color -b $k8s_color -f cccccc)$k8s_context
         transition $k8s_color $bg_color
         printf "\n"
     end
@@ -32,13 +32,13 @@ function fish_prompt
 
     if git rev-parse --is-inside-work-tree &> /dev/null
         set branch " "(git symbolic-ref --short -q HEAD)" "
-        printf (set_color -b f34f29)$branch
+        printf (set_color -b $git_color -f 222222)$branch
         transition $git_color $dir_color
     end
 
     #date -d now '+%S.%N'
     set cwd (string replace $HOME '~' (pwd))
-    printf (set_color -b $dir_color)"$cwd "
+    printf (set_color -b $dir_color -f 222222)"$cwd "
     transition $dir_color $bg_color
     printf "\n"
 

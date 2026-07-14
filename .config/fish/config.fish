@@ -18,6 +18,10 @@ alias dotfiles="git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME"
 # to line 36, allowing kubectl to connect to netskope clusters
 cat ~/bin/kubectl_complete.fish | source
 
+function docker --wraps podman
+    command podman $argv
+end
+
 function kubectl --wraps kubectl
     if [ $argv[1] = "namespace" ]
         command kubectl $argv
@@ -42,6 +46,7 @@ function kubecolor --wraps kubectl
     end
 end
 
+# Add completion for the `kubectl-namespace` subcommand I wrote
 complete -c kubectl -n '__fish_seen_subcommand_from namespace' -f -a '(kubectl --insecure-skip-tls-verify=true get namespaces -o jsonpath="{.items[*].metadata.name}" 2>/dev/null | string split " ")'
 
 alias watch="watch --color"
